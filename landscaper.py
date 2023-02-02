@@ -40,11 +40,15 @@ def win_check():
         print("You've won the game!")
         return True
     return False
+
+def reset():
+    game["money"] = 0
+    game["tool"] = 0
     
     
     
 while(True):
-    i = input(f" {1} Cut Grass {2} Buy Tool {3} Check Stats")
+    i = input(f" {1} Cut Grass {2} Buy Tool {3} Check Stats {4} Reset")
     i = int(i)
     if(i == 1):
         cut_grass()
@@ -53,7 +57,10 @@ while(True):
         buy_tool()
         
     if(i == 3):
-        check_stats
+        check_stats()
+        
+    if(i == 4):
+        reset()
         
     if(win_check()):
         break
