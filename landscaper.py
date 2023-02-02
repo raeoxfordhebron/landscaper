@@ -48,7 +48,7 @@ def reset():
     
     
 while(True):
-    i = input(f" {1} Cut Grass {2} Buy Tool {3} Check Stats {4} Reset")
+    i = input(f" {1} Cut Grass {2} Buy Tool {3} Check Stats {4} Reset {5} Quit")
     i = int(i)
     if(i == 1):
         cut_grass()
@@ -61,6 +61,10 @@ while(True):
         
     if(i == 4):
         reset()
+    
+    if(i == 5):
+        print("You quit the game")
+        break
         
     if(win_check()):
         break
