@@ -3,7 +3,8 @@ game = {"tool": 0, "money": 0}
 
 tools = [
     {"name": "teeth", "profit": 1, "cost": 0 },
-    {"name": "scissors", "profit": 5, "cost": 5}
+    {"name": "scissors", "profit": 5, "cost": 5},
+    {"name": "lawnmower", "profit": 50, "cost": 25}
 ]
 
 def cut_grass():
@@ -27,3 +28,7 @@ def buy_tool():
         return 0
     game["money"] -= next_tool["cost"]
     game["tool"] += 1
+    
+    
+while(True):
+    i = input(f" {1} Cut Grass")
