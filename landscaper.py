@@ -14,6 +14,10 @@ def cut_grass():
     print(f"You cut the grass with {tool['name']} and make {tool['profit']}")
     game["money"] += tool["profit"]
     
+def check_stats():
+    tool = tools[game["tool"]]
+    print(f"You are using the {tool['name']} and have {game['money']}")
+    
 def buy_tool():
     tool = tools[game["tool"]]
     if(game["tool"] >= len(tools) -1):
@@ -40,13 +44,16 @@ def win_check():
     
     
 while(True):
-    i = input(f" {1} Cut Grass {2} Buy Tool")
+    i = input(f" {1} Cut Grass {2} Buy Tool {3} Check Stats")
     i = int(i)
     if(i == 1):
         cut_grass()
         
     if(i == 2):
         buy_tool()
+        
+    if(i == 3):
+        check_stats
         
     if(win_check()):
         break
