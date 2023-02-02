@@ -31,6 +31,22 @@ def buy_tool():
     game["money"] -= next_tool["cost"]
     game["tool"] += 1
     
+def win_check():
+    if(game["tool"] == 4 & game["money"] >= 1000):
+        print("You've won the game!")
+        return True
+    return False
+    
+    
     
 while(True):
     i = input(f" {1} Cut Grass {2} Buy Tool")
+    i = int(i)
+    if(i == 1):
+        cut_grass()
+        
+    if(i == 2):
+        buy_tool()
+        
+    if(win_check()):
+        break
