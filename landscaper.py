@@ -5,7 +5,8 @@ tools = [
     {"name": "teeth", "profit": 1, "cost": 0 },
     {"name": "scissors", "profit": 5, "cost": 5},
     {"name": "push lawnmower", "profit": 50, "cost": 25},
-    {"name": "fancy lawnmower", "profit": 100, "cost": 250}
+    {"name": "fancy lawnmower", "profit": 100, "cost": 250},
+    {"name": "students", "profit": 250, "cost": 500}
 ]
 
 def cut_grass():
