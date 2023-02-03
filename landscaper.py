@@ -1,5 +1,5 @@
 ## Game State
-game = {"tool": 0, "money": 0}
+game = {"tool 1": 0, "tool 2": 0, "money": 0}
 
 tools = [
     {"name": "teeth", "profit": 1, "cost": 0 },
@@ -9,10 +9,14 @@ tools = [
     {"name": "students", "profit": 250, "cost": 500}
 ]
 
-def cut_grass():
-    tool = tools[game["tool"]]
-    print(f"You cut the grass with {tool['name']} and make {tool['profit']}")
-    game["money"] += tool["profit"]
+def cut_grass_with_first():
+    tool_1 = tools[game["tool 1"]]
+    print(f"You cut the grass with {tool_1['name']} and make {tool_1['profit']}")
+    game["money"] += tool_1["profit"]
+    
+def cut_grass_with_second():
+    tool_2 = tools[game["tool 2"]]
+    print(f"You cut the grass with {tool_2['name']}")
     
 def check_stats():
     tool = tools[game["tool"]]
