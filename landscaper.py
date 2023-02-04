@@ -36,7 +36,7 @@ def buy_tool_1():
     game["tool 1"] += 1
 
 def buy_tool_2():
-    tool_1 = tools[game["tool 2"]]
+    tool_2 = tools[game["tool 2"]]
     if(game["tool 2"] >= len(tools) -1):
         print("No more upgrades")
         return 0
