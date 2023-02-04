@@ -16,19 +16,15 @@ def cut_grass_with_first():
     
 def cut_grass_with_second():
     tool_2 = tools[game["tool 2"]]
-    print(f"You cut the grass with {tool_2['name']}")
+    print(f"You cut the grass with {tool_2['name']} and make {tool_2['profit']}")
     
-def check_stats():
-    tool = tools[game["tool"]]
-    print(f"You are using the {tool['name']} and have {game['money']}")
-    
-def buy_tool():
-    tool = tools[game["tool"]]
-    if(game["tool"] >= len(tools) -1):
+def buy_tool_1():
+    tool_1 = tools[game["tool 1"]]
+    if(game["tool 1"] >= len(tools) -1):
         print("No more upgrades")
         return 0
     
-    next_tool = tools[game["tool"] +1]
+    next_tool = tools[game["tool 1"] +1]
     if(next_tool == None):
         print("There are no more tools")
         return 0
@@ -37,10 +33,27 @@ def buy_tool():
         print("Not enough to buy tool")
         return 0
     game["money"] -= next_tool["cost"]
-    game["tool"] += 1
+    game["tool 1"] += 1
+
+def buy_tool_2():
+    tool_1 = tools[game["tool 2"]]
+    if(game["tool 2"] >= len(tools) -1):
+        print("No more upgrades")
+        return 0
+    
+    next_tool = tools[game["tool 2"] +1]
+    if(next_tool == None):
+        print("There are no more tools")
+        return 0
+    
+    if(game["money"] < next_tool["cost"]):
+        print("Not enough to buy tool")
+        return 0
+    game["money"] -= next_tool["cost"]
+    game["tool 2"] += 1
     
 def win_check():
-    if(game["tool"] == 4 & game["money"] >= 1000):
+    if(game["tool 1"] == 4 & game["tool 2"] == 4 & game["money"] >= 1000):
         print("You've won the game!")
         return True
     return False
@@ -52,21 +65,24 @@ def reset():
     
     
 while(True):
-    i = input(f" {1} Cut Grass {2} Buy Tool {3} Check Stats {4} Reset {5} Quit")
+    i = input(f" {1} Cut Grass with Primary Tool {2} Cut Grass with Secondary Tool {3} Buy Primary Tool {4} Buy Secondary Tool {5} Reset {6} Quit")
     i = int(i)
     if(i == 1):
-        cut_grass()
+        cut_grass_with_first()
         
     if(i == 2):
-        buy_tool()
+        cut_grass_with_second()
         
     if(i == 3):
-        check_stats()
+        buy_tool_1()
         
     if(i == 4):
-        reset()
-    
+        buy_tool_2()
+
     if(i == 5):
+        tool_1 = 0
+    
+    if(i == 6):
         print("You quit the game")
         break
         
