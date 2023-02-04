@@ -9,38 +9,61 @@ tools = [
     {"name": "students", "profit": 250, "cost": 500}
 ]
 
-def cut_grass_with_first():
+def cut_grass():
     tool_1 = tools[game["tool 1"]]
-    print(f"You cut the grass with {tool_1['name']} and make {tool_1['profit']}")
-    game["money"] += tool_1["profit"]
-    
-def cut_grass_with_second():
     tool_2 = tools[game["tool 2"]]
-    print(f"You cut the grass with {tool_2['name']}")
+    total = tool_1["profit"] + tool_2["profit"]
+    print(f"You cut the grass with {tool_1['name']} and {tool_2['name']}, and make {total} for the day")
+    game["money"] += total
     
 def check_stats():
-    tool = tools[game["tool"]]
-    print(f"You are using the {tool['name']} and have {game['money']}")
+    tool_1 = tools[game["tool 1"]]
+    tool_2 = tools[game["tool 2"]]
+    print(f"You are using {tool_1['name']} and {tool_2['name']}, and have {game['money']}")
     
 def buy_tool():
-    tool = tools[game["tool"]]
-    if(game["tool"] >= len(tools) -1):
-        print("No more upgrades")
-        return 0
+    tool_1 = tools[game["tool 1"]]
+    tool_2 = tools[game["tool 2"]]
+
+    while(True):
+        i =  input(f"Do you want to upgrade your {1} Primary Tool or {2} Secondary Tool?")
+        i = int(i)
+        if(1):
+            if(game["tool 1"] >= len(tools) -1):
+                print("No more upgrades")
+                return 0
+
+            next_tool = tools[game["tool 1"] + 1]
+            if(next_tool == None):
+                print("There are no more tools")
+            
+            if(game["money"] < next_tool["cost"]):
+                print("Not enough money to buy tool")
+                return 0
+
+            game["money"] -= next_tool["cost"]
+            game["tool 1"] += 1
+            return 0
+
+        if(2):
+            if(game["tool 2"] >= len(tools) -1):
+                print("No more upgrades")
+                return 0
+
+            next_tool = tools[game["tool 2"] + 1]
+            if(next_tool == None):
+                print("There are no more tools")
+            
+            if(game["money"] < next_tool["cost"]):
+                print("Not enough money to buy tool")
+                return 0
+
+            game["money"] -= next_tool["cost"]
+            game["tool 2"] += 1
     
-    next_tool = tools[game["tool"] +1]
-    if(next_tool == None):
-        print("There are no more tools")
-        return 0
-    
-    if(game["money"] < next_tool["cost"]):
-        print("Not enough to buy tool")
-        return 0
-    game["money"] -= next_tool["cost"]
-    game["tool"] += 1
     
 def win_check():
-    if(game["tool"] == 4 & game["money"] >= 1000):
+    if(game["tool 1"] == 4 & game["tool 2"] == 4 & game["money"] >= 1000):
         print("You've won the game!")
         return True
     return False
