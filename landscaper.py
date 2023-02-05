@@ -16,7 +16,8 @@ def cut_grass_with_first():
     
 def cut_grass_with_second():
     tool_2 = tools[game["tool 2"]]
-    print(f"You cut the grass with {tool_2['name']}")
+    print(f"You cut the grass with {tool_2['name']} and make {tool_2['profit']}")
+    game["money"] += tool_2["profit"]
     
 def check_stats():
     tool = tools[game["tool"]]
