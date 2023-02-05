@@ -66,16 +66,13 @@ def buy_tool_2():
     
 def buy_tool():
     i = input(f"Which tool do you want to upgrade? {1} Primary Tool {2} Secondary Tool")
+    i = int(i)
     if(i == 1):
-        tool_1 = tools[game["tool 1"]]
-        print(f"You have upgraded tool 1 to {tool_1 + 1['name']}")
         buy_tool_1()
         return 0
     
     if(i == 2):
-        tool_2 = tools[game["tool 2"]]
         buy_tool_2()
-        print(f"You have upgraded tool 2 to {tool_2 + 1['name']}")
         return 0
     
 def sell_tool_1():
@@ -97,6 +94,15 @@ def sell_tool_2():
     game["money"] =+ half
     game["tool 2"] -= 1
     
+def sell_tool():
+    i = input(f"Which tool do you want to downgrade? {1} Primary Tool {2} Secondary Tool")
+    i = int(i)
+    if(i == 1):
+        sell_tool_1()
+        
+    if(i == 2):
+        sell_tool_2()
+    
 def win_check():
     if(game["tool 1"] == 4 & game["tool 2"] == 4 & game["money"] >= 1000):
         print("You've won the game!")
@@ -110,7 +116,7 @@ def reset():
     
     
 while(True):
-    i = input(f" {1} Cut Grass {2} Buy Tool {3} Buy Primary Tool {4} Buy Secondary Tool {5} Sell Primary Tool {6} Sell Secondary Tool {7} Reset {8} Quit")
+    i = input(f" {1} Cut Grass {2} Buy Tool {3} Sell Tool {4} Reset {5} Quit")
     i = int(i)
     if(i == 1):
         cut_grass()
@@ -119,21 +125,12 @@ while(True):
         buy_tool()
         
     if(i == 3):
-        buy_tool_1()
+        sell_tool()
         
     if(i == 4):
-        buy_tool_2()
-
-    if(i == 5):
-        sell_tool_1()
-        
-    if(i == 6):
-        sell_tool_2()
-    
-    if(i == 7):
         reset()
     
-    if(i == 8):
+    if(i == 5):
         print("You quit the game")
         break
         
